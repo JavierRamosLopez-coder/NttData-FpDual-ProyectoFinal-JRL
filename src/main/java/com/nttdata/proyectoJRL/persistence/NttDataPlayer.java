@@ -25,7 +25,7 @@ public class NttDataPlayer implements Serializable {
 	/** Atributo estático serial **/
 	private static final long serialVersionUID = 1L;
 
-	/** Player numericIdentifier (PK)**/
+	/** Player numericIdentifier (PK) **/
 	private int idPlayer;
 
 	/** Player name **/
@@ -151,6 +151,13 @@ public class NttDataPlayer implements Serializable {
 	 */
 	public void setTeam(NttDataTeam team) {
 		this.team = team;
+	}
+
+	@Override
+	public String toString() {
+		return "NttDataPlayer [idPlayer=" + idPlayer + ", name=" + name + ", firstSurname=" + firstSurname
+				+ ", secondSurname=" + secondSurname + ", scoredGoals=" + scoredGoals + ", age=" + age + ", team="
+				+ team + "]";
 	}
 
 }

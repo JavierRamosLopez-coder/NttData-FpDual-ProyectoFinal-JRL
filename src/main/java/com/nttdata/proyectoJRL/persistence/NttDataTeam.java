@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * 
  * Clase NttDataTeam
@@ -40,9 +42,11 @@ public class NttDataTeam implements Serializable {
 	private int yearsInCompetition;
 
 	/** Team players **/
+	@JsonBackReference
 	private List<NttDataPlayer> players;
 
 	/** Team ultras **/
+	@JsonBackReference
 	private List<NttDataUltra> ultras;
 
 	/**
@@ -94,7 +98,7 @@ public class NttDataTeam implements Serializable {
 	/**
 	 * @return the players
 	 */
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "team", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "team")
 	public List<NttDataPlayer> getPlayers() {
 		return players;
 	}
@@ -109,7 +113,7 @@ public class NttDataTeam implements Serializable {
 	/**
 	 * @return the ultras
 	 */
-	@OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "team")
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "team")
 	@Fetch(value = FetchMode.SUBSELECT)
 	public List<NttDataUltra> getUltras() {
 		return ultras;
@@ -120,6 +124,11 @@ public class NttDataTeam implements Serializable {
 	 */
 	public void setUltras(List<NttDataUltra> ultras) {
 		this.ultras = ultras;
+	}
+
+	@Override
+	public String toString() {
+		return "" + idTeam + "";
 	}
 
 }

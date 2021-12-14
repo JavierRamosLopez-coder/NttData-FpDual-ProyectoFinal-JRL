@@ -4,6 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NttDataUltraI extends JpaRepository<NttDataUltra, Integer>{
+/**
+ * Clase NttDataUltraI
+ * 
+ * @author jramlope
+ *
+ */
+public interface NttDataUltraI extends JpaRepository<NttDataUltra, Integer> {
 
 }

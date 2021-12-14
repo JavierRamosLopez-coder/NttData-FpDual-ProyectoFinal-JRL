@@ -5,14 +5,12 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 
- * Interfaz NttDataPlayerI "vinculada" con la clase NttDataPlayer
+ * Interfaz NttDataPlayerI
  * 
  * @author jramlope
  *
  */
 @Repository
 public interface NttDataPlayerI extends JpaRepository<NttDataPlayer, Integer> {
-
-	public NttDataPlayer findByNameAndFirstSurname(final String name, final String firstSurname);
 
 }

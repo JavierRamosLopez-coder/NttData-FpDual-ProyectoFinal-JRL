@@ -15,28 +15,33 @@ public interface NttDataPlayerServiceI {
 
 	/**
 	 * Añadido de jugadores
+	 * 
 	 * @param player
 	 */
-	public void addPlayer(final NttDataPlayer player);
-	
+	public NttDataPlayer addPlayer(final NttDataPlayer player);
+
 	/**
 	 * Eliminado de jugadores
+	 * 
 	 * @param player
 	 */
 	public void deletePlayer(final NttDataPlayer player);
-	
+
 	/**
 	 * Muestra de todos los jugadores
+	 * 
 	 * @return
 	 */
 	public List<NttDataPlayer> showPlayer();
-	
+
 	/**
-	 * Búsqueda de jugador por nombre y primer apellido
-	 * @param name
-	 * @param firstSurname
+	 * Muestra de los goles encajados dados el nombre del jugador y el nombre de su
+	 * entrenador
+	 * 
+	 * @param playerName
+	 * @param coachName
 	 * @return
 	 */
-	public NttDataPlayer findByNameAndFirstSurname(final String name, final String firstSurname);
-	
+	public List<NttDataPlayer> getScoredGoalsByPlayerNameAndCoachName(String playerName, String coachName);
+
 }

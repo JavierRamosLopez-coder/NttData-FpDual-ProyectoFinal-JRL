@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * 
  * Clase NttDataFight
@@ -22,20 +24,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "NTTDATA_FIGHT")
 public class NttDataFight implements Serializable {
-	
+
 	/** Atributo estático Serial **/
 	private static final long serialVersionUID = 1L;
-	
+
 	/** Fight idFight **/
 	private int idFight;
-	
+
 	/** Fight placeOfFight **/
 	private String placeOfFight;
-	
+
 	/** Fight numOfFighter **/
 	private int numOfFighter;
-	
+
 	/** Fight ultra **/
+	@JsonBackReference
 	private List<NttDataUltra> ultra;
 
 	/**
@@ -98,8 +101,5 @@ public class NttDataFight implements Serializable {
 	public void setUltra(List<NttDataUltra> ultra) {
 		this.ultra = ultra;
 	}
-	
-	
-	
 
 }

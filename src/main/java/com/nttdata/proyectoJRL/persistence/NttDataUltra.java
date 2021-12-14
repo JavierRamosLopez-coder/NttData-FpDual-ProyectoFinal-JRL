@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * 
  * Clase NttDataUltra
@@ -42,11 +45,12 @@ public class NttDataUltra implements Serializable {
 	private String secondSurname;
 
 	/** Ultra team **/
+	@JsonManagedReference
 	private NttDataTeam team;
 
 	/** Ultra figth **/
+	@JsonBackReference
 	private List<NttDataFight> fight;
-
 
 	/**
 	 * @return the idUltra
@@ -112,7 +116,7 @@ public class NttDataUltra implements Serializable {
 	/**
 	 * @return the team
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ID_TEAM_FK")
 	public NttDataTeam getTeam() {
 		return team;
@@ -124,12 +128,13 @@ public class NttDataUltra implements Serializable {
 	public void setTeam(NttDataTeam team) {
 		this.team = team;
 	}
-	
+
 	/**
 	 * @return the fight
 	 */
 	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "TABLE_ULTRA_FIGHT", joinColumns = { @JoinColumn(name = "ID_ULTRA") }, inverseJoinColumns = { @JoinColumn(name = "ID_FIGHT") })
+	@JoinTable(name = "TABLE_ULTRA_FIGHT", joinColumns = { @JoinColumn(name = "ID_ULTRA") }, inverseJoinColumns = {
+			@JoinColumn(name = "ID_FIGHT") })
 	public List<NttDataFight> getFight() {
 		return fight;
 	}
@@ -140,6 +145,5 @@ public class NttDataUltra implements Serializable {
 	public void setFight(List<NttDataFight> fight) {
 		this.fight = fight;
 	}
-	
 
 }

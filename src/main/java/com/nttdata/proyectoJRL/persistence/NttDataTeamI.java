@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 
- * Interfaz NttDataTeamI "vinculada" con la clase NttDataTeam
+ * Interfaz NttDataTeamI
  * 
  * @author jramlope
  *
